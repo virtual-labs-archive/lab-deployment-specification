@@ -1,0 +1,101 @@
+{
+  "lab": {
+    "description": {
+      "name": "",
+      "id": "",
+      "status": "",
+      "discipline": [],
+      "type": "",
+      "server-side": true,
+      "integration_level": 6,
+      "developer": [
+        {
+          "name": "",
+          "title": "",
+          "role": "",
+          "organization": "VLEAD",
+          "institute": "IIIT Hyderabad",
+          "web": "",
+          "department": "Software Engg Research Lab (SERL)",
+          "contact": {
+            "email": "",
+	    "alternate_email": "",
+            "mobile_number": "",
+            "office_number": ""
+          }
+        }
+      ]
+    },
+
+    "build_requirements": {
+      "platform": {
+        "os": "ubuntu",
+        "osVersion": "14.04",
+        "arch": "x64",
+        "service_pack": "",
+        "installer": [
+        ],
+        "build_steps": {
+          "configure": [],
+          "pre_build": [],
+          "build": [
+            "cd ../;make build"
+          ],
+          "post_build": [
+              "cp -R build/code/* /var/www/",
+              "chmod -R 755 /var/www",
+              "mkdir /var/www/logs",
+              "chmod -R 777 /var/www/logs",
+	      "mkdir /var/www/runtime/static/uploads",
+              "chmod -R 777 /var/www/runtime/static/uploads",
+          ],
+          "status": []
+        }
+      }
+    },
+    
+    "runtime_requirements": {
+      "platform": {
+        "os": "ubuntu",
+        "osVersion": "14.04",
+        "arch": "x64",
+        "servicepack": "",
+        "hosting": "dedicated",
+        "memory": {
+          "max_required": "4gb",
+          "min_required": "2gb"
+        },
+        "storage": {
+          "min_required": "150gb"
+        },
+        "installer": [
+          "rsync -avz apache2.conf /etc/apache2/",
+          "rsync -avz security.conf /etc/apache2/conf-available/security.conf",
+          "apt-get install libapache2-modsecurity -y",
+          "a2enmod headers",
+          "a2enmod rewrite",
+          "service apache2 restart",
+          "bash /var/www/scripts/setup.sh",
+          "python /var/www/scripts/setup.py install",
+          "bash /var/www/scripts/configure.sh",
+          "python /var/www/scripts/db_setup.py"
+        ],
+        "lab_actions": {
+          "init"    : [],
+          "shutdown": [],
+          "pause"   : [],
+          "resume"  : [],
+          "start"   : [],
+          "stop"    : [],
+          "backup"  : [],
+          "restore" : [],
+          "clean"   : [],
+          "stats"   : [],
+          "publish" : []
+        }
+      }
+    }
+  },
+
+  "template": "1.0"
+}

@@ -1,0 +1,6 @@
+* lab-deployment-specification
+Deployment Specification for an experiment or lab.
+Different versions of the specifications are maintained
+here.
+
+
