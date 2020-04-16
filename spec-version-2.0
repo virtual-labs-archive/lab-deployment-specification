@@ -1,0 +1,26 @@
+{
+    "spec-version": 2.0,
+    "hosting-unit": {
+        "id": "",
+        "type": "",
+        "name": "",
+        "discipline": [],
+        "owner": {
+            "github-id": "",
+            "institute": ""
+        },
+        "build-requirements": {
+            "build-cmd": "",
+            "build-dir": "",
+            "src-dir": "",
+            "build-dependencies": []
+        },
+        "runtime-requirements": {
+            "os": "ubuntu",
+            "osVersion": "18.04",
+            "runtime-dependencies": [],
+            "browser-plugins": []
+        },
+        "additional-requirements": {}
+    }
+}
